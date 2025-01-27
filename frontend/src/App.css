@@ -1,0 +1,90 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.sidebar {
+  width: 25%;
+  padding: 20px;
+  background-color: #1e1e1e;
+}
+
+.chat-window {
+  flex: 1;
+  padding: 20px;
+  border-left: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-prompt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #bbb;
+}
+
+.chat-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Keeps messages at the bottom */
+}
+
+.messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column; /* Stack messages vertically */
+  gap: 10px;
+}
+
+.message {
+  padding: 12px;
+  max-width: 70%;
+  border-radius: 10px;
+  word-wrap: break-word;
+  background-color: #333;
+  color: #fff;
+  display: inline-block;
+}
+
+.user-message {
+  background-color: #242526; /* Light green for user messages */
+  align-self: flex-end; /* Align user messages to the left */
+}
+
+.bot-message {
+  background-color: #242526; /* Dark gray for bot messages */
+  align-self: flex-start; /* Align bot messages to the right */
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+}
+
+.chat-input button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+}
