@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Message from './Message';
-import ChatInput from './ChatInput'
+import ChatInput from './ChatInput';
 
 function ChatWindow() {
   const [messages, setMessages] = useState([]);
 
-  const handleSendMessage = (message) => {
+  const handleSendMessage = async (message) => {
     setMessages([...messages, { text: message, sender: 'user' }]);
-    // Simulate a chatbot response
-    setTimeout(() => {
+
+    try {
+      const response = await axios.post("http://localhost:8000/response/", { question: message });
       setMessages(prevMessages => [
         ...prevMessages,
-        { text: 'This is a response from the chatbot.', sender: 'bot' }
+        { text: response.data.answer, sender: 'bot' }
       ]);
-    }, 1000);
+    } catch (error) {
+      console.error("Error fetching response:", error);
+      setMessages(prevMessages => [
+        ...prevMessages,
+        { text: "Error getting response from server.", sender: 'bot' }
+      ]);
+    }
   };
 
   return (
