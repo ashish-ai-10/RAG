@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from create_knowledge_base import router as common_router
-from SimpleRAG import router as simple_rag_router
+from simple_RAG import router as simple_rag_router
 
 app = FastAPI()
 

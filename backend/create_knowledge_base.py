@@ -5,12 +5,14 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 import tempfile
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 router = APIRouter()
 
 # Global variables (shared across RAG techniques)
 vector_store = None
-embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key="AIzaSyAWkIlKzsQCnXXE-RnN3FQ345CxinN3CsM")
+embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=os.environ.get("GOOGLE_API_KEY"))
 
 def load_pdf(uploaded_file):
     """Save the uploaded file temporarily and process it with PyPDFLoader."""

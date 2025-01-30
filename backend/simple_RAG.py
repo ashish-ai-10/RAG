@@ -3,11 +3,13 @@ from pydantic import BaseModel
 from fastapi.responses import JSONResponse
 from langchain_google_genai import ChatGoogleGenerativeAI
 from create_knowledge_base import get_vector_store
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 router = APIRouter()
 
 # Initialize LLM
-llm = ChatGoogleGenerativeAI(model="gemini-pro", api_key="AIzaSyAWkIlKzsQCnXXE-RnN3FQ345CxinN3CsM")
+llm = ChatGoogleGenerativeAI(model="gemini-pro", api_key=os.environ.get("GOOGLE_API_KEY"))
 
 # Models
 class QueryRequest(BaseModel):
