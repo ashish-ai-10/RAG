@@ -18,7 +18,7 @@ function FileUpload({ onUpload }) {
     formData.append("file", selectedFile);
   
     try {
-      const response = await axios.post("http://localhost:8000/knowledge_base/", formData, {
+      const response = await axios.post("http://localhost:8000/common/knowledge_base/", formData, {
         headers: { "Content-Type": "multipart/form-data" }
       });
   
