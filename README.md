@@ -69,7 +69,7 @@ A chatbot that enables users to upload a PDF and query its contents using differ
 
 ## Future Enhancements
 
-- Implement additional retrieval techniques like BM25, Hybrid RAG.
+- Implement additional retrieval techniques like Multiquery RAG, Document Re-Ranking, Graph RAG etc
 - Optimize chunking strategies for better retrieval accuracy.
 - Deploy as a cloud-hosted service (e.g., AWS, Vercel, or Render).
 
