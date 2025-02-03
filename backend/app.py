@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from create_knowledge_base import router as common_router
 from simple_RAG import router as simple_rag_router
 from multiqueryRAG import multiquery_router
+from rerankRAG import rerank_router
 
 app = FastAPI()
 
@@ -21,3 +22,5 @@ app.include_router(common_router, prefix="/common")
 app.include_router(simple_rag_router, prefix="/simple_rag")
 
 app.include_router(multiquery_router,prefix="/query_transformation_rag")
+
+app.include_router(rerank_router,prefix="/re-ranking_rag")

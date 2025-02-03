@@ -52,7 +52,7 @@ function ChatWindow() {
         <select value={ragMethod} onChange={(e) => setRagMethod(e.target.value)}>
           <option value="simple_rag">Simple RAG</option>
           <option value="query_transformation_rag">Query Transformation RAG</option>
-          <option value="hybrid_rag">Hybrid RAG</option>
+          <option value="re-ranking_rag">Re-Ranking RAG</option>
         </select>
       </div>
 

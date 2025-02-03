@@ -4,6 +4,8 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_experimental.text_splitter import SemanticChunker
+ 
 import tempfile
 import os
 from dotenv import load_dotenv
@@ -23,7 +25,8 @@ def load_pdf(uploaded_file):
     loader = PyPDFLoader(temp_file_path)
     docs = loader.load()
 
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+    # text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+    text_splitter = SemanticChunker(embeddings, breakpoint_threshold_type="gradient",breakpoint_threshold_amount=60.0)
     return text_splitter.split_documents(docs)
 
 def setup_vectorstore(all_splits):
