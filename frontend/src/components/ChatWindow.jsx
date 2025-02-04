@@ -7,6 +7,7 @@ function ChatWindow() {
   const [messages, setMessages] = useState([]);
   const [ragMethod, setRagMethod] = useState("simple_rag"); // Default RAG method
   const [queryTransformationOption, setQueryTransformationOption] = useState("");
+  const [evalutionresult,setevalutionresult]=useState("")
   const messagesEndRef = useRef(null);
 
   // Auto-scroll to latest message
@@ -22,7 +23,8 @@ function ChatWindow() {
         question: message,
         query_transformation_option: queryTransformationOption, // Pass selected option if Query Transformation RAG is selected
       });
-
+      console.log(response.data.rag_evalution)
+      setevalutionresult(response.data.rag_evalution)
       // Handle the response (single string response expected now)
       if (response.data.answer) {
         setMessages((prevMessages) => [
@@ -99,7 +101,7 @@ function ChatWindow() {
       {/* Messages Display */}
       <div className="messages" style={{ flex: 1, overflowY: "auto" }}>
         {messages.map((msg, index) => (
-          <Message key={index} text={msg.text} sender={msg.sender} />
+          <Message key={index} text={msg.text} sender={msg.sender} evalution={evalutionresult}/>
         ))}
         <div ref={messagesEndRef} />
       </div>
